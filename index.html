@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IG Feed Generator - Final</title>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-container">
+    <div class="controls">
+      <!-- Upload Section -->
+      <div class="control-section">
+        <h3 class="section-title"><i class="fas fa-cloud-upload-alt"></i> Pengaturan Dasar</h3>
+        <div class="control-grid">
+          <div class="control-group">
+            <label for="bgInput">Gambar Latar</label>
+            <input type="file" id="bgInput" accept="image/*" />
+          </div>
+          <div class="control-group">
+            <label for="logoInput">Logo</label>
+            <input type="file" id="logoInput" accept="image/*" />
+            <div class="alignment-controls">
+              <button class="alignment-btn align-logo active" data-align="left" title="Align Left">
+                <i class="fas fa-align-left"></i>
+              </button>
+              <button class="alignment-btn align-logo" data-align="center" title="Align Center">
+                <i class="fas fa-align-center"></i>
+              </button>
+              <button class="alignment-btn align-logo" data-align="right" title="Align Right">
+                <i class="fas fa-align-right"></i>
+              </button>
+            </div>
+          </div>
+                    <div class="control-group">
+            <label for="logoText">Logo Teks</label>
+            <input type="text" id="logoText" placeholder="Your brand name" />
+            <span class="tooltip">Atur Align di bagian Logo</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Text Section -->
+      <div class="control-section">
+        <h3 class="section-title"><i class="fas fa-font"></i> Konten</h3>
+        <div class="control-grid">
+          <div class="control-group">
+            <label for="headlineInput">Judul</label>
+            <textarea id="headlineInput" placeholder="Main headline text">Ini adalah contoh judul, silahkan atur sendiri.</textarea>
+            <div class="alignment-controls">
+              <button class="alignment-btn align-headline active" data-align="left" title="Align Left">
+                <i class="fas fa-align-left"></i>
+              </button>
+              <button class="alignment-btn align-headline" data-align="center" title="Align Center">
+                <i class="fas fa-align-center"></i>
+              </button>
+              <button class="alignment-btn align-headline" data-align="right" title="Align Right">
+                <i class="fas fa-align-right"></i>
+              </button>
+            </div>
+<select class="font-weight-select" data-target="headline">
+  <option value="300">Tipis</option>
+  <option value="400">Normal</option>
+  <option value="500">Medium</option>
+  <option value="600">Semi Tebal</option>
+  <option value="700" selected>Tebal</option>
+  <option value="800">Extra Tebal</option>
+  <option value="900">Super Tebal</option>
+</select>
+
+          </div>
+          <div class="control-group">
+            <label for="subheadlineInput">Subjudul</label>
+            <input type="text" id="subheadlineInput" placeholder="Subheading text" value="Subjudul" />
+            <div class="alignment-controls">
+              <button class="alignment-btn align-subheadline active" data-align="left" title="Align Left">
+                <i class="fas fa-align-left"></i>
+              </button>
+              <button class="alignment-btn align-subheadline" data-align="center" title="Align Center">
+                <i class="fas fa-align-center"></i>
+              </button>
+              <button class="alignment-btn align-subheadline" data-align="right" title="Align Right">
+                <i class="fas fa-align-right"></i>
+              </button>
+            </div>
+            <select class="font-weight-select" data-target="subheadline">
+  <option value="300">Tipis</option>
+  <option value="400">Normal</option>
+  <option value="500">Medium</option>
+  <option value="600">Semi Tebal</option>
+  <option value="700" selected>Tebal</option>
+  <option value="800">Extra Tebal</option>
+  <option value="900">Super Tebal</option>
+</select>
+
+          </div>
+          <div class="control-group">
+            <label for="footerInput">Footer</label>
+            <textarea id="footerInput" placeholder="Footer text (can use HTML)">Tulisan <strong>Footer</strong> <em>disini</em></textarea>
+            <div class="alignment-controls">
+              <button class="alignment-btn align-footer active" data-align="left" title="Align Left">
+                <i class="fas fa-align-left"></i>
+              </button>
+              <button class="alignment-btn align-footer" data-align="center" title="Align Center">
+                <i class="fas fa-align-center"></i>
+              </button>
+              <button class="alignment-btn align-footer" data-align="right" title="Align Right">
+                <i class="fas fa-align-right"></i>
+              </button>
+            </div>
+            <select class="font-weight-select" data-target="footer">
+  <option value="300">Tipis</option>
+  <option value="400">Normal</option>
+  <option value="500">Medium</option>
+  <option value="600">Semi Tebal</option>
+  <option value="700" selected>Tebal</option>
+  <option value="800">Extra Tebal</option>
+  <option value="900">Super Tebal</option>
+</select>
+
+          </div>
+        </div>
+      </div>
+      
+      <!-- Color Section -->
+      <div class="control-section">
+        <h3 class="section-title"><i class="fas fa-palette"></i> Warna</h3>
+        <div class="control-grid">
+          <div class="control-group">
+            <label for="subheadlineBgColor">Latar Subjudul</label>
+            <input type="color" id="subheadlineBgColor" value="#000080" />
+            <div class="color-preview" id="subheadlineColorPreview" style="background-color: #000080;"></div>
+          </div>
+                    <div class="control-group">
+  <label for="overlayColor">Overlay Color</label>
+  <input type="color" id="overlayColor" value="#000080" />
+  <div class="color-preview" id="overlayColorPreview" style="background-color: #000080;"></div>
+</div>
+          <div class="control-group">
+            <label for="overlayOpacity">Overlay Opacity</label>
+            <input type="range" id="overlayOpacity" min="0" max="100" value="60" />
+          </div>
+        </div>
+      </div>
+
+    </div>
+    
+    <!-- Preview Section -->
+    <div class="preview-section">
+      <div class="canvas-scroll-wrapper">
+      <div id="canvas" class="canvas-container">
+        <div class="template" id="template" style="background-image: url('');">
+          <div class="overlay" id="overlay"></div>
+          <div class="content">
+            <div class="top-section" id="topSection">
+              <img id="logo" class="logo" src="" alt="Logo" style="display: none;" />
+              <div id="logoTextEl" class="logo-text"></div>
+            </div>
+            <div class="bottom-section" id="bottomSection">
+              <div id="subheadline" class="subheadline"></div>
+              <div id="headline" class="headline"></div>
+              <div id="footer" class="footer"></div>
+            </div>
+          </div>
+        </div>
+        </div>
+    </div>
+                <button class="download-btn" onclick="downloadImage()">
+        <i class="fas fa-download"></i> Download Gambar
+      </button>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+<footer style="text-align: center; margin-top: 3rem; padding: 1rem 0; font-size: 0.9rem; color: #6c757d;">
+  Tools oleh <a href="https://www.kreasai.com" target="_blank" style="color: #000080; font-weight: 600; text-decoration: none;">KREASAI.COM</a>
+</footer>
+</html>
